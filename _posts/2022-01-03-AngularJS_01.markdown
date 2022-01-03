@@ -82,3 +82,5 @@ ng-app의 이름을 'myApp'으로 지정하고, 컨트롤(ng-controller)를 'myC
 ```
 
 **이 구조가 Angular.js의 가장 흔한 기본 구조이니 기억해야 한다.**
+
+[출처] https://forest71.tistory.com/157
