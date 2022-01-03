@@ -1,0 +1,58 @@
+---
+layout: post
+title: Angular.js 개념 및 예제 (02)
+subtitle: Angular.js
+gh-repo: kamja227/kamja227.github.io
+gh-badge: [star, fork, follow]
+tags: [Angular, FE, FrontEnd, JavaScript]
+comments: true
+---
+
+
+## 예제(03)
+
+다음으로 구현할 예제는 다음 그림과 같이 배열의 값을 게시판 리스트 출력하듯이 화면에 출력하는 예제이다.
+![image](https://t1.daumcdn.net/cfile/tistory/99BB15465A86DDFF14)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script>
+      <!-- data list based on Array -->
+      var app = angular.module("myApp", []);
+      
+      app.controller("myCtrl", function($scope) {
+          $scope.boardlist = [
+              {id: 1, title: 'Title1', writer: 'Writer1'},
+              {id: 2, title: 'Title2', writer: 'Writer2'}
+              <!-- 데이터를 저장하기 위해 필드는 JSon으로, 행은 배열([])로 작성하였다. -->
+          ];
+      });
+    </script>
+  </head>
+  <body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+      <table border="1">
+        <tr> <!-- 필드: id, title, writer -->
+          <td style="width: 50px">No.</td>
+          <td style="width: 50px">Title</td>
+          <td style="width: 50px">Name</td>
+        </tr>
+        <tr ng-repeat="item in boardlist">
+        <!-- 각 행의 값은 ng-repeat에서 지정한 'item' 변수에 넣어지고, --> 
+          
+          <td style="width: 50px">{{$index+1}}</td>
+          <!-- $index는 Angular JS에서 제공하는 변수로 '현재 출력하는 배열의 위치(index) 값을 제공한다.
+          <td style="width: 50px">{item.title}}</td>
+          <!-- 'item' 변수의 키(필드)값 id, title, writer를 추출해서 값을 출력한다. --> 
+          <td style="width: 50px">{item.writer}}</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
+```
