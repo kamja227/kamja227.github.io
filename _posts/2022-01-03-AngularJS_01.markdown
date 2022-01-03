@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Angular.js 개념 및 예제 (01)
-subtitle: Angular.js 개념 및 예제
+subtitle: Angular.js
 gh-repo: kamja227/kamja227.github.io
 gh-badge: [star, fork, follow]
 tags: [Angular, FE, FrontEnd, JavaScript]
@@ -18,7 +18,7 @@ Angular JS의 기본 문법들은 간단해서 쉽게 익힐 수 있지만, MVC(
 
 W3School의 예제로 입력상자(Text)에서 이름을 입력하면
 이름에 ‘Hello’를 붙여서 하단에 출력하는 예제 (위 그림 하단의 코드)이다.
-```javascript
+```html
 <!DOCTYPE html>
 <html lang="en-US">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
