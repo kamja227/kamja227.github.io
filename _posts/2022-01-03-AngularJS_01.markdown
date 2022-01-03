@@ -14,7 +14,7 @@ Anuglar JS는 자바스크립 기반의 오픈 소스 프론트엔드 웹 애플
 Angular JS의 기본 문법들은 간단해서 쉽게 익힐 수 있지만, MVC(MVVM)이 익숙하지 않으면 시작하기 어려운 단점이 있다.
 더욱이 Anugular CLI는 MVC(MVVM) 개념이 없으면 시작하기 어렵다.
 
-간단한 게시판 예제(1)
+## 예제(01)
 
 W3School의 예제로 입력상자(Text)에서 이름을 입력하면
 이름에 ‘Hello’를 붙여서 하단에 출력하는 예제 (위 그림 하단의 코드)이다.
@@ -25,70 +25,60 @@ W3School의 예제로 입력상자(Text)에서 이름을 입력하면
 <!-- Angular JS를 사용하기 위해 JS파일을 포함한다. -->
 <body>
   <div ng-app=""> <!-- Angular JS 사용영역이라고 ng-app 지시자를 이용하여 표시한다. -->
-    <!-- ng-app 지시자의 하위(자식) 태그는 모두 Angular JS로 제어할 수 있다.-->
+                  <!-- ng-app 지시자의 하위(자식) 태그는 모두 Angular JS로 제어할 수 있다. -->
     
     <p>Name : <input type="text" ng-model="name"></p> <!-- 입력상자에서 ng-model 지시자로 'name'이라는 이름을 부여했다. -->
-    <h1>Hello {{name}}</h1> <!-- 입력상자에서 사용자가 입력한 값을 {{}} 기호로 출력한다.-->
+    <h1>Hello {{name}}</h1> <!-- 입력상자에서 사용자가 입력한 값을 {{}} 기호로 출력한다. -->
    </div>
   </body>
 </html>
 ```
 
-**Here is some bold text**
-
-## Here is a secondary heading
-
-Here's a useless table:
-
-| Number | Next number | Previous number |
-| :------ |:--- | :--- |
-| 다섯 | 여섯 | 넷 |
-| Ten | Eleven | Nine |
-| Seven | Eight | Six |
-| 2 | 3 | 1 |
+기존의 JavaScript(JS) 방식으로 설명하면 입력상자의 이름을 'name'으로 지정하고 (ng-model),
+이 'name'이라는 이름을 입력상자의 값을 가져와 사용하는 예제이다.
+Angular JS에서는 별다른 JS 코드 없이 몇 가지 지정만으로 사용자가 입력한 글이 하단에 출력 된다.
+- ng-app
+- ng-model
+- {{}}
+를 기억해 두면 된다.
 
 
-How about a yummy crepe?
+## 예제(02)
 
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg)
+다음 예제는 JS(Angular JS)에서 변수(hello)를 선언하고, 변수(hello)의 값을 HTMLdptj {{}}로 출력하는 예제이다.
+ng-app의 이름을 'myApp'으로 지정하고, 컨트롤(ng-controller)를 'myCtrl'로 지정하여 제어하는 예제이다.
 
-It can also be centered!
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <title>Board Sample</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script>
+      var app = angular.module("myApp", []);
+      <!-- Angular JS 앱을 지정 -->
+      
+      app.controller("myCtrl", function($scope) {
+      <!-- 앱의 컨트롤러를 지정 -->
+      
+          $scope.hello = "Hello World";
+          <!-- 변수 'hello' 값 지정 -->
+          <!-- 모든 변수는 $scope 하위에 선언하여 사용한다. -->
+      });
+    </script>
+  </head>
+  <body>
+      <div ng-app="myApp" ng-controller="myCtrl">
+          <!-- HTML에서 앱 이름(myApp)과 컨트롤러 이름(myCtrl)를 부여했다. -->
+          <!-- 이 이름은 자바 스크립트에서 Angular JS가 사용하고 있다. -->
+        
+          {{hello}}
+          <!-- 변수의 값은 HTMLdptj {{변수}}로 출력한다. -->
+      </div>
+  </body>
+</html>
+```
 
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg){: .mx-auto.d-block :}
-
-Here's a code chunk:
-
-~~~
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-~~~
-
-
-And here is the same code yet again but with line numbers:
-
-{% highlight javascript linenos %}
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-{% endhighlight %}
-
-## Boxes
-You can add notification, warning and error boxes like this:
-
-### Notification
-
-{: .box-note}
-**Note:** This is a notification box.
-
-### Warning
-
-{: .box-warning}
-**Warning:** This is a warning box.
-
-### Error
-
-{: .box-error}
-**Error:** This is an error box.
+`<u>**이 구조가 Angular JSdml 가장 흔한 기본 구조이니 기억해야 한다.**</u>`
