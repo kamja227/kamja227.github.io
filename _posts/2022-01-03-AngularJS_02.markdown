@@ -123,6 +123,7 @@ CRUD 게시판 구현을 위해 이번에는 그림과 같지 한 행을 삭제�
   </body>
 </html>
 ```
+
 변수를 $scope 하위에 boardlist로 사용하듯이
 `<u>함수도 $scope 하위에 선언해서 사용한다.</u>` '$scope.remove = function (id).
 
@@ -134,9 +135,103 @@ CRUD 게시판 구현을 위해 이번에는 그림과 같지 한 행을 삭제�
           return item.id === id;
       });
 ```
+
+
+삭제 예제에서 알아야 할 것은, Angular JS에서 함수를 생성하는 방법과 어떻게 HTML에서 Angular JS의 함수를 호출하는 가이다.
 - $scope
 - ng-click
 
+
+## 예저(05)
+
+이번에는 그림과 같이 사용자가 입력한 값을 추가하는 기능을 구현한다. 
+![image](https://t1.daumcdn.net/cfile/tistory/9916D7345A86E6E333)
+
+
+
+기존 코드에 다음 코드와 같이 addBoard 함수와 Form 태그 등을 추가해서 구현다.
+
+```html
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script>
+      var app = angular.module("myApp", []);
+      
+      app.controller("myCtrl", function($scope) {
+          $scope.boardlist = [
+              {id: 1, title: 'Title1', writer: 'Writer1'},
+              {id: 2, title: 'Title2', writer: 'Writer2'}
+          ];
+      
+          <!-- remove function -->
+          $scope.remove = function (id) {
+            if(!id) return;
+      
+            var idx = -1;
+            for(var i=0; i<$scope.boardlist.length; i++) {
+                if($scope.boardlist[i].id === id) {
+                  idx = i;
+                  break;
+                }                                    
+            }                                        
+                                                    
+            if(idx === -1) return;
+            $scope.boardlist.splice(idx, 1);
+            <!-- 배열 삭제를 위한 splice() 함수 호출 -->                                      
+          }
+      
+      
+          $scope.addBoard = function () {
+              var newId = ! $scope.boardlist.length ? 1 : $scope.boardlist[$scope.boardlist.length-1].id + 1;
+              var newItem = {
+                  id: newId,
+                  title: $scope.boardForm.title,
+                  writer: $scope.boardForm.writer
+              };
+      
+              $scope.boardlist.push(newItem);
+          }
+      });
+      
+    </script>
+  </head>
+  <body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+      
+      <!-- 입력 폼 -->
+      <form ng-submit="addBoard()">
+        Title: <input type="text" ng-model="boardForm.title" autofocus><br/>
+               <!-- 제목 입력상자 "boardForm.title -->
+        Name: <input type="text" ng-model="boardForm.writer"> <br/>
+              <!-- 이름 입력상자 "boardForm.writer -->
+        <button type="submit">Add</button>
+        <!-- 버튼 클릭하면, addBoard() 함수 호출, 새로운 행 (Json)을 생성하여 마지막 배열로 추가(push)한다.-->
+        <!-- ** HTML 입력 상자와 Angular 변수를 연결(Binding)해서 사용하는 개념. -->
+      </form>
+      
+      <table border="1">
+        <tr>
+          <td style="width: 50px">No.</td>
+          <td style="width: 50px">Title</td>
+          <td style="width: 50px">Name</td>
+          <td style="width: 50px"></td>
+        </tr>
+        <tr ng-repeat="item in boardlist">
+          <td style="width: 50px">{{$index+1}}</td>
+          <td style="width: 50px">{{item.writer}}</td>
+          <td style="width: 50px">{{item.title}}</td>
+          <td style="width: 50px"><button type="button" ng-click="remove(item.id)">삭제</button></td>
+          <!-- 삭제 버튼에 해당 하는 행의 id 값을 데이터(boardlist)에서 삭제 -->
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
+```
 
 
 [출처] https://forest71.tistory.com/157
