@@ -1,0 +1,110 @@
+---
+layout: post
+title: Angular.js 개념 정리
+subtitle: Angular.js
+gh-repo: kamja227/kamja227.github.io
+gh-badge: [star, fork, follow]
+tags: [Angular, FE, FrontEnd, JavaScript]
+comments: true
+---
+
+- ng-app
+- ng-init
+
+## 표현식
+원하는 곳에 원하는 데이터를 출력하는 구문으로 '{{출력값}}' 형식으로 사용한다.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <title>Insert title here</title>
+  </head>
+  <body>
+  
+    <div ng-app="" ng-init="data1=100">
+    <!-- ng-init에 변수 'data1' 생성 및 초기화 -->
+      <p>5 + 5 : {{5 + 5}}</p>
+      <p>data1 : {{data1}}</p>
+      <!-- 데이터 출력 -->
+    </div>
+    
+  </body>
+</html>
+```
+
+여러개의 변수(str, dict, array)와 값을 ng-init에 넣어서 출력할 수 있다.
+참고: ng-init이 너무 길어질 경우, controller를 사용하여 데이터를 제어하는 것이 용이하다.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <title>Insert title here</title>
+  </head>
+  <body>
+  
+    <div ng-app="" ng-init="data1=100;data2=200;data3='문자열1';data2='문자열2';obj={a1:100, a2:200};array=[0, 1, 2]">
+      <p>5 + 5 : {{5 + 5}}</p>
+      <p>data1 : {{data1}}</p>
+      <p>data1 + data2 : {{data1 + data2}}</p>
+      <p>문자열1 : {{'문자열'}}</p>
+      <p>data3 : {{data3}}</p>
+      <p>data3 + data4 : {{data3 + data4}}</p>
+      <p>obj.a1 : {{obj.a1}}</p>
+      <p>obj.a2 : {{obj.a2}}</p>
+      <p>array[0] : {{array[0]}}</p>
+      <p>array[1] : {{array[1]}}</p>
+      <p>array[2] : {{array[2]}}</p>
+    </div>
+    
+  </body>
+</html>
+```
+
+## 모듈(module)
+지시자 설정, 함수 정의 등을 할 수 있는 Angular JS의 객체형태
+controller, service, factory 등 모듈에 다양한 설정 가능.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <title>Insert title here</title>
+    <script>
+      var app = angular.module("test_app", []);
+      <!-- 변수 'app'에 'test_app'이라는 angular 모듈을 선언 -->
+    </script>
+  </head>
+  <body>
+  
+    <div ng-app="test_app>
+    <!-- 'test_app' 이름으로 선언한 모듈은 태그 안에 이렇게 설정. -->
+    <!-- test app 모듈에 요소들(controller, service, 지시자 등)을 설정하면 해당 태그 안에서 사용 가능 -->
+    </div>
+    
+  </body>
+</html>
+```
+
+- 참고 : 지시자
+- ng-app : Angular JS 애플리케이션에 대한 초기 설정
+- ng-init : 애플리케이션에 사용할 데이터 설정
+- ng-model : HTML에서의 입력 요소(input)들을 컨트롤 하기 위한 지시자
+- ng-repeat : 지정된 태그를 배열에 들어 있는 요소만큼 반복하여 출력
+
+
+## 컨트롤러(controller)
+html 파일의 div 태그 안에서 사용할 멤버 및 데이터들을 통제하기 위해 사용.
+
+
+[출처] https://minimilab.tistory.com/47
