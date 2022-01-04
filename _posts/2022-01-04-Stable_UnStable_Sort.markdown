@@ -12,17 +12,17 @@ comments: true
 
 중복된 키를 순서대로 정렬하는 정렬 알고리즘.
 
-  list = [1, 7, 3, 5, 4, 7, 9];
+    list = [1, 7, 3, 5, 4, 7, 9];
   
 이 리스트에서 7이 2번 나온다. 구분을 위해 ()를 이용해 앞의 7은 '7(1)', 뒤에 것은 '7(2)'라고 표시하겠다.
   
-  list = [1, 7(1), 3, 5, 4, 7(2), 9];
+    list = [1, 7(1), 3, 5, 4, 7(2), 9];
   
 와 같다.
 
 이 리스트를 정렬했을 때,
-1.  list = [1, 3, 5, 7(1), 7(2), 9];
-2.  list = [1, 3, 5, 7(2), 7(1), 9];
+1.    list = [1, 3, 5, 7(1), 7(2), 9];
+2.    list = [1, 3, 5, 7(2), 7(1), 9];
 
 1 처럼 정렬 되는 것을 <u>안정 정렬(Stable Sort)</u> ,
 2 처럼 정렬 되는 것을 <u>불안정 정렬(Unstable Sort)</u> 라고 한다.
@@ -34,6 +34,7 @@ comments: true
   - Merge Sort
   - Bubble Sort
   - Counting Sort
+
 
 * Unstable Sorting Algorithm
   - Selection Sort
@@ -49,6 +50,7 @@ In-place 알고리즘이란, 원소들의 개수에 비해서 충분히 무시�
 제자리성(혹은 제자리 정렬)과 같은 의미
 일단은 <u>추가적인 메모리 공간이 거의(아예가 아니다) 안 드는 정렬</u>이라고만 알고 있자.
 
+
 * In-place Sorting Algorithm
   - Insertion Sort
   - Selection Sort
@@ -57,10 +59,12 @@ In-place 알고리즘이란, 원소들의 개수에 비해서 충분히 무시�
   - Heap Sort
   - Quick Sort (정의에 따라서 Not in place sorting으로 볼 수도 있으나 흔히 In-place로 본다.)
 
+
 * Not In-place Sorting Algorithm
   - Merge Sort
   - Counting Sort
   - Radix Sort
   - Bucket Sort
+
 
 [출처] https://velog.io/@cookncoding/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%9C%EB%85%90-Stable-Sort-Inplace
