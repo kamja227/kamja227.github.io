@@ -87,7 +87,7 @@ controller, service, factory 등 모듈에 다양한 설정 가능.
   </head>
   <body>
   
-    <div ng-app="test_app>
+    <div ng-app="test_app">
     <!-- 'test_app' 이름으로 선언한 모듈은 태그 안에 이렇게 설정. -->
     <!-- test app 모듈에 요소들(controller, service, 지시자 등)을 설정하면 해당 태그 안에서 사용 가능 -->
     </div>
@@ -106,5 +106,76 @@ controller, service, factory 등 모듈에 다양한 설정 가능.
 ## 컨트롤러(controller)
 html 파일의 div 태그 안에서 사용할 멤버 및 데이터들을 통제하기 위해 사용.
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <title>Insert title here</title>
+    <script>
+      var app = angular.module("test_app", []);
+      
+      app.controller("test_controller", function ($scope) {
+          $scope.data1 = 100;
+          $scope.data2 = 200;
+      });
+    </script>
+  </head>
+  <body>
+  
+    <div ng-app="test_app" ng-controller="test_controller">
+      <p>data1 : {{data1}}</p>
+      <p>data2 : {{data2}}</p>
+    </div>
+    
+  </body>
+</html>
+```
+
+모듈을 생성한 app 변수에 app.controller()형식으로 컨트롤러를 설정 가능.
+컨트롤러는 div 태그 안에서 사용할 멤버들을 정의한다.
+모듈에 설정한 'test_controller'를 div 태그 안에 'ng-controller'에 적용함으로써, app.controller() 안에서 적용했던 변수들을 적용할 수 있다.
+
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <title>Insert title here</title>
+    <script>
+      var app = angular.module("test_app", []);
+      
+      app.controller("controller1", function ($scope) {
+          $scope.data1 = 100;
+          $scope.data2 = 200;
+          $scope.changeValue = function () {
+              $scope.data1 = 1000;
+              $scope.data2 = 2000;
+          }
+      });
+      
+    </script>
+  </head>
+  <body>
+  
+    <div ng-app="test_app" ng-controller="controller1">
+      data1 : {{data1}}
+      data2 : {{data2}}
+      <hr/>
+      
+      <input type="text" ng-model="data1" /><br/>
+      <input type="text" ng-model="data2" /><br/>
+      
+      <button type="button" ng-click"changeValue()">값 변경</button>
+    </div>
+    
+  </body>
+</html>
+```
 
 [출처] https://minimilab.tistory.com/47
