@@ -11,8 +11,10 @@ comments: true
 - ng-app
 - ng-init
 
+
 ## 표현식
 원하는 곳에 원하는 데이터를 출력하는 구문으로 '{{출력값}}' 형식으로 사용한다.
+
 
 ```html
 <!DOCTYPE html>
@@ -72,6 +74,7 @@ comments: true
 지시자 설정, 함수 정의 등을 할 수 있는 Angular JS의 객체형태
 controller, service, factory 등 모듈에 다양한 설정 가능.
 
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -103,8 +106,10 @@ controller, service, factory 등 모듈에 다양한 설정 가능.
 - ng-repeat : 지정된 태그를 배열에 들어 있는 요소만큼 반복하여 출력
 
 
+
 ## 컨트롤러(controller)
 html 파일의 div 태그 안에서 사용할 멤버 및 데이터들을 통제하기 위해 사용.
+
 
 ```html
 <!DOCTYPE html>
@@ -151,11 +156,12 @@ html 파일의 div 태그 안에서 사용할 멤버 및 데이터들을 통제�
       var app = angular.module("test_app", []);
       
       app.controller("controller1", function ($scope) {
-          $scope.data1 = 100;
-          $scope.data2 = 200;
+          $scope.show_data1 = 0;
+          $scope.show_data2 = 0;
+      
           $scope.changeValue = function () {
-              $scope.data1 = 1000;
-              $scope.data2 = 2000;
+              $scope.data1 = $scope.data1;
+              $scope.data2 = $scope.data2;
           }
       });
       
@@ -164,8 +170,8 @@ html 파일의 div 태그 안에서 사용할 멤버 및 데이터들을 통제�
   <body>
   
     <div ng-app="test_app" ng-controller="controller1">
-      data1 : {{data1}}
-      data2 : {{data2}}
+      data1 : {{show_data1}}
+      data2 : {{show_data2}}
       <hr/>
       
       <input type="text" ng-model="data1" /><br/>
